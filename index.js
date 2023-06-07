@@ -3,6 +3,8 @@ const pool = require('./config');
  
 const app = express();
 app.use(express.json());
+
+const pate = 5070;
  
 app.get('/', (req, res) => {
     res.send('Hello');
@@ -24,6 +26,6 @@ app.post('/api/treks', (req, res) => {
   res.status(201).send('Sent the new data to the DB ...')
 });
  
-app.listen(10000, () => {
-    console.log("Server running on port 10000");
+app.listen(pate, () => {
+    console.log("Server running on port", pate);
 });
