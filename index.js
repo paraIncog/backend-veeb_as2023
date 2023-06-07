@@ -4,7 +4,7 @@ const pool = require('./config');
 const app = express();
 app.use(express.json());
 
-const pate = 5070;
+const pate = 10000;
  
 app.get('/', (req, res) => {
     res.send('Hello');
