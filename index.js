@@ -10,10 +10,10 @@ app.get('/', (req, res) => {
  
 app.get('/api/treks', async (req, res) => {
   try {
-    const { rows } = await pool.query(
+    const treks = await pool.query(
         'SELECT * FROM treks;'
     );
-    res.json(rows);
+    res.json({ treks });
   } catch (error) {
     console.log(error);
     res.status(500).send(error.message)
