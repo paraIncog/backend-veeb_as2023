@@ -1,11 +1,16 @@
 const express = require('express');
 const pool = require('./config');
+const cors = require('cors');
  
+
 const app = express();
+const port = 3000;
+
+app.use(cors({
+  origin: '*'
+}));
 app.use(express.json());
 
-const pate = 10000;
- 
 app.get('/', (req, res) => {
     res.send('Hello');
 });
@@ -26,6 +31,6 @@ app.post('/api/treks', (req, res) => {
   res.status(201).send('Sent the new data to the DB ...')
 });
  
-app.listen(pate, () => {
-    console.log("Server running on port", pate);
+app.listen(port, () => {
+    console.log("Server running on port", port);
 });
