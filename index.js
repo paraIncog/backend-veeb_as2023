@@ -3,7 +3,7 @@ const pool = require('./config');
 var cors = require('cors')
 
 const app = express();
-const port = 3000;
+const port = 3030;
 
 // app.use(cors({
 //   origin: '*'
@@ -18,7 +18,7 @@ app.get('/', (req, res) => {
 // var express = require('express')
 
 var corsOptions = {
-  origin: 'https://andrease-matkad-app.onrender.com',
+  origin: '*',
   optionsSuccessStatus: 200 // some legacy browsers (IE11, various SmartTVs) choke on 204
 }
 
@@ -29,7 +29,7 @@ app.get('/api/treks', cors(corsOptions), async (req, res, next) => {
   res.json(rows)
 })
 
-app.listen(80, function () {
+app.listen(port, function () {
   console.log('CORS-enabled web server listening on port')
 })
 
@@ -49,6 +49,6 @@ app.post('/api/treks', (req, res) => {
   res.status(201).send('Sent the new data to the DB ...')
 });
  
-app.listen(port, () => {
-    console.log("Server running on port", port);
-});
+// app.listen(port, () => {
+//     console.log("Server running on port", port);
+// });
