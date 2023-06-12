@@ -6,20 +6,17 @@ const app = express();
 const port = 3030;
 app.use(express.json());
 
-// app.use(cors({
-//   origin: '*'
-// }));
-
+app.use(cors({
+  origin: '*'
+}));
 
 app.get('/', (req, res) => {
   res.send('Simple API homepage');
 });
 
-// var express = require('express')
-
 var corsOptions = {
   origin: '*',
-  optionsSuccessStatus: 200 // some legacy browsers (IE11, various SmartTVs) choke on 204
+  optionsSuccessStatus: 200
 }
 
 
