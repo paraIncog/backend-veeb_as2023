@@ -1,28 +1,22 @@
 const express = require('express');
+const cors = require('cors');
 const pool = require('./config');
-// var cors = require('cors')
 
 const app = express();
-const port = 3030;
 app.use(express.json());
 
-// app.use(cors({
-//   origin: '*'
-// }));
+app.use(cors({
+  origin: '*'
+}));
 
 app.get('/', (req, res) => {
-  res.send('Simple API homepage');
+    res.send('Simple API homepage');
 });
-
-// var corsOptions = {
-//   origin: '*',
-//   optionsSuccessStatus: 200
-// }
 
 app.get('/api/treks', async (req, res) => {
   try {
     const { rows } = await pool.query(
-      'SELECT * FROM treks;'
+        'SELECT * FROM treks;'
     );
     res.json(rows);
   } catch (error) {
@@ -35,6 +29,6 @@ app.post('/api/treks', (req, res) => {
   res.status(201).send('Sent the new data to the DB ...')
 });
 
-app.listen(port, () => {
-  console.log('Listening on port', port)
-})
+app.listen(10000, () => {
+    console.log("Server running on port 10000");
+});
