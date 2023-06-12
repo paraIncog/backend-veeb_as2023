@@ -1,26 +1,25 @@
 const express = require('express');
 const pool = require('./config');
-var cors = require('cors')
+// var cors = require('cors')
 
 const app = express();
 const port = 3030;
 app.use(express.json());
 
-app.use(cors({
-  origin: '*'
-}));
+// app.use(cors({
+//   origin: '*'
+// }));
 
 app.get('/', (req, res) => {
   res.send('Simple API homepage');
 });
 
-var corsOptions = {
-  origin: '*',
-  optionsSuccessStatus: 200
-}
+// var corsOptions = {
+//   origin: '*',
+//   optionsSuccessStatus: 200
+// }
 
-
-app.get('/api/treks', cors(corsOptions), async (req, res, next) => {
+app.get('/api/treks', async (req, res) => {
   try {
     const { rows } = await pool.query(
       'SELECT * FROM treks;'
@@ -37,5 +36,5 @@ app.post('/api/treks', (req, res) => {
 });
 
 app.listen(port, () => {
-  console.log('CORS-enabled web server listening on port')
+  console.log('Listening on port', port)
 })
